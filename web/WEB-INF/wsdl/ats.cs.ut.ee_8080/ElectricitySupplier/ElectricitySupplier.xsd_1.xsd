@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.1-hudson-28-. --><xs:schema xmlns:tns="http://supplier.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://supplier.com/">
+
+<xs:element name="RequestContract" type="tns:RequestContract" />
+
+<xs:element name="RequestContractResponse" type="tns:RequestContractResponse" />
+
+<xs:element name="RequestContractStatus" type="tns:RequestContractStatus" />
+
+<xs:element name="RequestContractStatusResponse" type="tns:RequestContractStatusResponse" />
+
+<xs:element name="RequestInvoices" type="tns:RequestInvoices" />
+
+<xs:element name="RequestInvoicesResponse" type="tns:RequestInvoicesResponse" />
+
+<xs:element name="SendBalanceInvoice" type="tns:SendBalanceInvoice" />
+
+<xs:element name="SendBalanceInvoiceResponse" type="tns:SendBalanceInvoiceResponse" />
+
+<xs:element name="SendConsumptionProfile" type="tns:SendConsumptionProfile" />
+
+<xs:element name="SendConsumptionProfileResponse" type="tns:SendConsumptionProfileResponse" />
+
+<xs:element name="SendMeteringReadings" type="tns:SendMeteringReadings" />
+
+<xs:element name="SendMeteringReadingsResponse" type="tns:SendMeteringReadingsResponse" />
+
+<xs:element name="SendSupplyTerminationMessage" type="tns:SendSupplyTerminationMessage" />
+
+<xs:element name="SendSupplyTerminationMessageResponse" type="tns:SendSupplyTerminationMessageResponse" />
+
+<xs:element name="SupplierChangeReply" type="tns:SupplierChangeReply" />
+
+<xs:element name="SupplierChangeReplyResponse" type="tns:SupplierChangeReplyResponse" />
+
+<xs:element name="TerminateContract" type="tns:TerminateContract" />
+
+<xs:element name="TerminateContractResponse" type="tns:TerminateContractResponse" />
+
+<xs:element name="hello" type="tns:hello" />
+
+<xs:element name="helloResponse" type="tns:helloResponse" />
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SendBalanceInvoice">
+<xs:sequence>
+<xs:element name="BalanceInvoiceMessage" type="tns:balanceInvoiceMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="balanceInvoiceMessage">
+<xs:sequence>
+<xs:element name="date" type="xs:string" minOccurs="0" />
+<xs:element name="value" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SendBalanceInvoiceResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="RequestContractStatus">
+<xs:sequence>
+<xs:element name="Id" type="xs:int" form="qualified" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RequestContractStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RequestContract">
+<xs:sequence>
+<xs:element name="ClientRegistrationMessage" type="tns:clientRegistrationMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="clientRegistrationMessage">
+<xs:sequence>
+<xs:element name="areaId" type="xs:int" />
+<xs:element name="clientID" type="xs:int" />
+<xs:element name="facilityAddress" type="xs:string" minOccurs="0" />
+<xs:element name="facilityId" type="xs:int" />
+<xs:element name="NOId" type="xs:string" minOccurs="0" />
+<xs:element name="name" type="xs:string" minOccurs="0" />
+<xs:element name="postalAddress" type="xs:string" minOccurs="0" />
+<xs:element name="previousSupplierId" type="xs:string" minOccurs="0" />
+<xs:element name="projectedUsage" type="xs:int" />
+<xs:element name="settlementMethod" type="xs:int" />
+<xs:element name="startDate" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RequestContractResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SupplierChangeReply">
+<xs:sequence>
+<xs:element name="SupplierChangeReplyMessage" type="tns:supplierChangeReplyMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="supplierChangeReplyMessage">
+<xs:sequence>
+<xs:element name="accepted" type="xs:boolean" />
+<xs:element name="areaId" type="xs:int" />
+<xs:element name="facilityId" type="xs:int" />
+<xs:element name="NOId" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SupplierChangeReplyResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="SendSupplyTerminationMessage">
+<xs:sequence>
+<xs:element name="SupplyTerminationMessage" type="tns:supplyTerminationMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="supplyTerminationMessage">
+<xs:sequence>
+<xs:element name="areaId" type="xs:int" />
+<xs:element name="date" type="xs:string" minOccurs="0" />
+<xs:element name="facilityId" type="xs:int" />
+<xs:element name="NOId" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SendSupplyTerminationMessageResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="RequestInvoices">
+<xs:sequence>
+<xs:element name="RequestInvoicesMessage" type="tns:requestInvoicesMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="requestInvoicesMessage">
+<xs:sequence>
+<xs:element name="areaId" type="xs:int" />
+<xs:element name="facilityId" type="xs:int" />
+<xs:element name="NOId" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="RequestInvoicesResponse">
+<xs:sequence>
+<xs:element name="invoicelist" type="tns:invoice" form="qualified" minOccurs="0" maxOccurs="unbounded" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="invoice">
+<xs:sequence>
+<xs:element name="amount" type="xs:int" />
+<xs:element name="endDate" type="xs:string" minOccurs="0" />
+<xs:element name="startDate" type="xs:string" minOccurs="0" />
+<xs:element name="value" type="xs:float" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SendMeteringReadings">
+<xs:sequence>
+<xs:element name="MeteringMessage" type="tns:meteringMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="meteringMessage">
+<xs:sequence>
+<xs:element name="areaId" type="xs:int" />
+<xs:element name="date" type="xs:string" minOccurs="0" />
+<xs:element name="facilityId" type="xs:int" />
+<xs:element name="meterValue" type="xs:int" />
+<xs:element name="NOId" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SendMeteringReadingsResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="SendConsumptionProfile">
+<xs:sequence>
+<xs:element name="ConsumptionProfileMessage" type="tns:consumptionProfileMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="consumptionProfileMessage">
+<xs:sequence>
+<xs:element name="date" type="xs:string" minOccurs="0" />
+<xs:element name="value" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SendConsumptionProfileResponse">
+<xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="TerminateContract">
+<xs:sequence>
+<xs:element name="ClientTerminationMessage" type="tns:clientTerminationMessage" form="qualified" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="clientTerminationMessage">
+<xs:sequence>
+<xs:element name="areaId" type="xs:int" />
+<xs:element name="endDate" type="xs:string" minOccurs="0" />
+<xs:element name="facilityId" type="xs:int" />
+<xs:element name="NOId" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="TerminateContractResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="MeteringService" targetNamespace="http://service.ws.t2no1.esi/" xmlns:ns1="http://service.ws.t2no1.esi/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://service.ws.t2no1.esi/" version="1.0" xmlns:tns="http://service.ws.t2no1.esi/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="submitLoadProfile" type="tns:submitLoadProfile"/>
+<xs:element name="submitLoadProfileResponse" type="tns:submitLoadProfileResponse"/>
+<xs:element name="submitQualitySeries" type="tns:submitQualitySeries"/>
+<xs:element name="submitQualitySeriesResponse" type="tns:submitQualitySeriesResponse"/>
+<xs:complexType name="submitLoadProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="loadProfileInput" type="tns:loadProfileInput"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="loadProfileInput">
+    <xs:complexContent>
+      <xs:extension base="tns:messageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="loadProfile" type="tns:loadProfile"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="messageBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="messageId" type="xs:string"/>
+      <xs:element minOccurs="0" name="messageType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="loadProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="calculationAreaId" type="xs:string"/>
+      <xs:element minOccurs="0" name="networkLossConsumption" type="xs:long"/>
+      <xs:element minOccurs="0" name="profileEndDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="profileSettledConsumption" type="xs:long"/>
+      <xs:element minOccurs="0" name="profileStartDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="supplierId" type="xs:string"/>
+      <xs:element minOccurs="0" name="totalAreaInput" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="submitLoadProfileResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:loadProfileOutput"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="loadProfileOutput">
+    <xs:complexContent>
+      <xs:extension base="tns:messageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="loadProfile" type="tns:loadProfile"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="submitQualitySeries">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="qualitySeriesInput" type="tns:qualitySeriesInput"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="qualitySeriesInput">
+    <xs:complexContent>
+      <xs:extension base="tns:messageBase">
+        <xs:sequence>
+          <xs:element name="qualitySeries">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element minOccurs="0" name="key" type="xs:dateTime"/>
+                      <xs:element minOccurs="0" name="value" type="xs:float"/>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element minOccurs="0" name="senderId" type="xs:string"/>
+          <xs:element minOccurs="0" name="seriesId" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="submitQualitySeriesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="submitQualitySeriesResponse">
+    <wsdl:part element="ns1:submitQualitySeriesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitQualitySeries">
+    <wsdl:part element="ns1:submitQualitySeries" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitLoadProfileResponse">
+    <wsdl:part element="ns1:submitLoadProfileResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitLoadProfile">
+    <wsdl:part element="ns1:submitLoadProfile" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MeteringService">
+    <wsdl:operation name="submitLoadProfile">
+      <wsdl:input message="ns1:submitLoadProfile" name="submitLoadProfile">
+    </wsdl:input>
+      <wsdl:output message="ns1:submitLoadProfileResponse" name="submitLoadProfileResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitQualitySeries">
+      <wsdl:input message="ns1:submitQualitySeries" name="submitQualitySeries">
+    </wsdl:input>
+      <wsdl:output message="ns1:submitQualitySeriesResponse" name="submitQualitySeriesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -34,4 +34,95 @@
                 JAX-WS WSIMPORT SECTION
                 ===================
             -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-server" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/server"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/server" destdir="${build.generated.dir}/jax-wsCache/server" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/server/wsdl/esi.vels.dev.modera.net/project/service/server.php.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://esi.vels.dev.modera.net/project/service/server.php?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/server/wsdl/esi.vels.dev.modera.net/project/service/server.php.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/server"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/server">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-server" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/t2no2api"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/server"/>
+    </target>
+    <target name="wsimport-client-ElectricitySupplierService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ElectricitySupplierService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ElectricitySupplierService" destdir="${build.generated.dir}/jax-wsCache/ElectricitySupplierService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ElectricitySupplierService/wsdl/mcrlabs.eu_8080/T2ES2/ElectricitySupplierService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://mcrlabs.eu:8080/T2ES2/ElectricitySupplierService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ElectricitySupplierService/wsdl/mcrlabs.eu_8080/T2ES2/ElectricitySupplierService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ElectricitySupplierService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ElectricitySupplierService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ElectricitySupplierService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ee/ut/cs/esi/t2es2/services"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ElectricitySupplierService"/>
+    </target>
+    <target name="wsimport-client-ElectricitySupplier" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ElectricitySupplier"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ElectricitySupplier" destdir="${build.generated.dir}/jax-wsCache/ElectricitySupplier" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ElectricitySupplier/wsdl/ats.cs.ut.ee_8080/ElectricitySupplier/ElectricitySupplier.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://ats.cs.ut.ee:8080/ElectricitySupplier/ElectricitySupplier?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ElectricitySupplier/wsdl/ats.cs.ut.ee_8080/ElectricitySupplier/ElectricitySupplier.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ElectricitySupplier"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ElectricitySupplier">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ElectricitySupplier" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/supplier"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ElectricitySupplier"/>
+    </target>
+    <target name="wsimport-client-meteringService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/meteringService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/meteringService" destdir="${build.generated.dir}/jax-wsCache/meteringService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/meteringService/wsdl/176.34.224.194_8080/ws/meteringService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://176.34.224.194:8080/ws/meteringService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/meteringService/wsdl/176.34.224.194_8080/ws/meteringService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/meteringService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/meteringService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-meteringService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/esi/t2no1/ws/impl"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/meteringService"/>
+    </target>
+    <target name="wsimport-client-clientService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/clientService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/clientService" destdir="${build.generated.dir}/jax-wsCache/clientService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/clientService/wsdl/176.34.224.194_8080/ws/clientService.wsdl" catalog="catalog.xml" extension="true" verbose="true" wsdlLocation="http://176.34.224.194:8080/ws/clientService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/clientService/wsdl/176.34.224.194_8080/ws/clientService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/clientService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/clientService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-clientService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/esi/t2no1/ws/impl"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/clientService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-server, wsimport-client-ElectricitySupplierService, wsimport-client-ElectricitySupplier, wsimport-client-meteringService, wsimport-client-clientService"/>
 </project>

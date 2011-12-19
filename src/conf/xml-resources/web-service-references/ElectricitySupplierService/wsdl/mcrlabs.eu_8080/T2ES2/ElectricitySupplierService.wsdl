@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ElectricitySupplierServiceImplService" targetNamespace="http://services.t2es2.esi.cs.ut.ee/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://services.t2es2.esi.cs.ut.ee/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://services.t2es2.esi.cs.ut.ee/" version="1.0" xmlns:tns="http://services.t2es2.esi.cs.ut.ee/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="getServiceId" type="tns:getServiceId" />
+<xs:element name="getServiceIdResponse" type="tns:getServiceIdResponse" />
+<xs:element name="registerKrado" type="tns:registerKrado" />
+<xs:element name="registerKradoResponse" type="tns:registerKradoResponse" />
+<xs:element name="registerNetworkOwner" type="tns:registerNetworkOwner" />
+<xs:element name="registerNetworkOwnerResponse" type="tns:registerNetworkOwnerResponse" />
+<xs:element name="submitAPERAK" type="tns:submitAPERAK" />
+<xs:element name="submitAPERAKResponse" type="tns:submitAPERAKResponse" />
+<xs:element name="submitAnnualConsumptionReport" type="tns:submitAnnualConsumptionReport" />
+<xs:element name="submitAnnualConsumptionReportResponse" type="tns:submitAnnualConsumptionReportResponse" />
+<xs:element name="submitBalanceInvoice" type="tns:submitBalanceInvoice" />
+<xs:element name="submitBalanceInvoiceResponse" type="tns:submitBalanceInvoiceResponse" />
+<xs:element name="submitEndContract" type="tns:submitEndContract" />
+<xs:element name="submitEndContractResponse" type="tns:submitEndContractResponse" />
+<xs:element name="submitMeterData" type="tns:submitMeterData" />
+<xs:element name="submitMeterDataResponse" type="tns:submitMeterDataResponse" />
+<xs:element name="submitNewContract" type="tns:submitNewContract" />
+<xs:element name="submitNewContractResponse" type="tns:submitNewContractResponse" />
+<xs:complexType name="submitAnnualConsumptionReport">
+<xs:sequence>
+<xs:element minOccurs="0" name="annualConsumption" type="tns:annualConsumption" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="annualConsumption">
+<xs:sequence>
+<xs:element minOccurs="0" name="messageId" type="xs:string" />
+<xs:element minOccurs="0" name="messageRecipient" type="xs:string" />
+<xs:element minOccurs="0" name="sendTime" type="xs:dateTime" />
+<xs:element minOccurs="0" name="messageSender" type="xs:string" />
+<xs:element minOccurs="0" name="relatedMessageId" type="xs:string" />
+<xs:element name="annualConsumption" type="xs:double" />
+<xs:element minOccurs="0" name="client" type="tns:client" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="client">
+<xs:sequence>
+<xs:element name="id" type="xs:int" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+<xs:element minOccurs="0" name="postalAddress" type="xs:string" />
+<xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+<xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+<xs:element minOccurs="0" name="phone" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="submitAnnualConsumptionReportResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:annualConsumptionResponse" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="annualConsumptionResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="registerNetworkOwner">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:int" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerNetworkOwnerResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="registerKrado">
+<xs:sequence>
+<xs:element minOccurs="0" name="id" type="xs:int" />
+<xs:element minOccurs="0" name="name" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="registerKradoResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="getServiceId">
+<xs:sequence>
+<xs:element minOccurs="0" name="null" type="xs:anyType" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="getServiceIdResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="submitAPERAK">
+<xs:sequence>
+<xs:element minOccurs="0" name="aperak" type="tns:aperak" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="aperak">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="submitAPERAKResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="submitBalanceInvoice">
+<xs:sequence>
+<xs:element minOccurs="0" name="balanceInvoice" type="tns:balanceInvoice" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="balanceInvoice">
+<xs:sequence>
+<xs:element minOccurs="0" name="messageId" type="xs:string" />
+<xs:element minOccurs="0" name="messageRecipient" type="xs:string" />
+<xs:element minOccurs="0" name="sendTime" type="xs:dateTime" />
+<xs:element minOccurs="0" name="messageSender" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="submitBalanceInvoiceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:balanceInvoiceResponse" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="balanceInvoiceResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="invoice" type="tns:balanceInvoice" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="submitMeterData">
+<xs:sequence>
+<xs:element minOccurs="0" name="meterData" type="tns:meterData" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="meterData">
+<xs:sequence>
+<xs:element minOccurs="0" name="messageId" type="xs:string" />
+<xs:element minOccurs="0" name="messageRecipient" type="xs:string" />
+<xs:element minOccurs="0" name="sendTime" type="xs:dateTime" />
+<xs:element minOccurs="0" name="messageSender" type="xs:string" />
+<xs:element minOccurs="0" name="relatedMessageId" type="xs:string" />
+<xs:element minOccurs="0" name="readingValue" type="xs:string" />
+<xs:element name="estimated" type="xs:boolean" />
+<xs:element minOccurs="0" name="readingStartDate" type="xs:dateTime" />
+<xs:element minOccurs="0" name="readingEndDate" type="xs:dateTime" />
+<xs:element minOccurs="0" name="client" type="tns:client" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="submitMeterDataResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:meterDataResponse" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="meterDataResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="submitNewContract">
+<xs:sequence>
+<xs:element minOccurs="0" name="contract" type="tns:clientContractMessage" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="clientContractMessage">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="submitNewContractResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:newContractResponse" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="newContractResponse">
+<xs:sequence />
+</xs:complexType>
+<xs:complexType name="submitEndContract">
+<xs:sequence>
+<xs:element minOccurs="0" name="contract" type="tns:clientContractMessage" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="submitEndContractResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="tns:endContractResponse" />
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="endContractResponse">
+<xs:sequence />
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="registerNetworkOwner">
+    <wsdl:part element="tns:registerNetworkOwner" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitAnnualConsumptionReportResponse">
+    <wsdl:part element="tns:submitAnnualConsumptionReportResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitBalanceInvoiceResponse">
+    <wsdl:part element="tns:submitBalanceInvoiceResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitNewContractResponse">
+    <wsdl:part element="tns:submitNewContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitAPERAK">
+    <wsdl:part element="tns:submitAPERAK" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitEndContract">
+    <wsdl:part element="tns:submitEndContract" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitMeterData">
+    <wsdl:part element="tns:submitMeterData" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKradoResponse">
+    <wsdl:part element="tns:registerKradoResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitBalanceInvoice">
+    <wsdl:part element="tns:submitBalanceInvoice" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitEndContractResponse">
+    <wsdl:part element="tns:submitEndContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitAnnualConsumptionReport">
+    <wsdl:part element="tns:submitAnnualConsumptionReport" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitNewContract">
+    <wsdl:part element="tns:submitNewContract" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getServiceId">
+    <wsdl:part element="tns:getServiceId" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerNetworkOwnerResponse">
+    <wsdl:part element="tns:registerNetworkOwnerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitMeterDataResponse">
+    <wsdl:part element="tns:submitMeterDataResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerKrado">
+    <wsdl:part element="tns:registerKrado" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitAPERAKResponse">
+    <wsdl:part element="tns:submitAPERAKResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getServiceIdResponse">
+    <wsdl:part element="tns:getServiceIdResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ElectricitySupplierService">
+    <wsdl:operation name="submitAnnualConsumptionReport">
+      <wsdl:input message="tns:submitAnnualConsumptionReport" name="submitAnnualConsumptionReport">
+    </wsdl:input>
+      <wsdl:output message="tns:submitAnnualConsumptionReportResponse" name="submitAnnualConsumptionReportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerNetworkOwner">
+      <wsdl:input message="tns:registerNetworkOwner" name="registerNetworkOwner">
+    </wsdl:input>
+      <wsdl:output message="tns:registerNetworkOwnerResponse" name="registerNetworkOwnerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerKrado">
+      <wsdl:input message="tns:registerKrado" name="registerKrado">
+    </wsdl:input>
+      <wsdl:output message="tns:registerKradoResponse" name="registerKradoResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceId">
+      <wsdl:input message="tns:getServiceId" name="getServiceId">
+    </wsdl:input>
+      <wsdl:output message="tns:getServiceIdResponse" name="getServiceIdResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitAPERAK">
+      <wsdl:input message="tns:submitAPERAK" name="submitAPERAK">
+    </wsdl:input>
+      <wsdl:output message="tns:submitAPERAKResponse" name="submitAPERAKResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitBalanceInvoice">
+      <wsdl:input message="tns:submitBalanceInvoice" name="submitBalanceInvoice">
+    </wsdl:input>
+      <wsdl:output message="tns:submitBalanceInvoiceResponse" name="submitBalanceInvoiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitMeterData">
+      <wsdl:input message="tns:submitMeterData" name="submitMeterData">
+    </wsdl:input>
+      <wsdl:output message="tns:submitMeterDataResponse" name="submitMeterDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitNewContract">
+      <wsdl:input message="tns:submitNewContract" name="submitNewContract">
+    </wsdl:input>
+      <wsdl:output message="tns:submitNewContractResponse" name="submitNewContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitEndContract">
+      <wsdl:input message="tns:submitEndContract" name="submitEndContract">
+    </wsdl:input>
+      <wsdl:output message="tns:submitEndContractResponse" name="submitEndContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ElectricitySupplierServiceImplServiceSoapBinding" type="tns:ElectricitySupplierService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="submitAnnualConsumptionReport">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="submitAnnualConsumptionReport">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitAnnualConsumptionReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerNetworkOwner">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="registerNetworkOwner">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerNetworkOwnerResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceId">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getServiceId">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getServiceIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registerKrado">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="registerKrado">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="registerKradoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitAPERAK">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="submitAPERAK">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitAPERAKResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitBalanceInvoice">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="submitBalanceInvoice">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitBalanceInvoiceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitMeterData">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="submitMeterData">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitMeterDataResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitNewContract">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="submitNewContract">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitNewContractResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitEndContract">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="submitEndContract">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="submitEndContractResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ElectricitySupplierServiceImplService">
+    <wsdl:port binding="tns:ElectricitySupplierServiceImplServiceSoapBinding" name="ElectricitySupplierServiceImplPort">
+      <soap:address location="http://mcrlabs.eu:8080/T2ES2/ElectricitySupplierService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://esi.vels.dev.modera.net/project/service/noapi.wsdl" uri="wsdl/esi.vels.dev.modera.net/project/service/noapi.wsdl"/>
+    <system systemId="http://mcrlabs.eu:8080/T2ES2/ElectricitySupplierService?wsdl" uri="wsdl/mcrlabs.eu_8080/T2ES2/ElectricitySupplierService.wsdl"/>
+    <system systemId="http://esi.vels.dev.modera.net/project/service/server.php?wsdl" uri="wsdl/esi.vels.dev.modera.net/project/service/server.php.wsdl"/>
+    <system systemId="http://ats.cs.ut.ee:8080/ElectricitySupplier/ElectricitySupplier?wsdl" uri="wsdl/ats.cs.ut.ee_8080/ElectricitySupplier/ElectricitySupplier.wsdl"/>
+    <system systemId="http://ats.cs.ut.ee:8080/ElectricitySupplier/ElectricitySupplier?xsd=1" uri="wsdl/ats.cs.ut.ee_8080/ElectricitySupplier/ElectricitySupplier.xsd_1.xsd"/>
+    <system systemId="http://176.34.224.194:8080/ws/clientService?wsdl" uri="wsdl/176.34.224.194_8080/ws/clientService.wsdl"/>
+    <system systemId="http://176.34.224.194:8080/ws/clientService?wsdl=ClientService.wsdl" uri="wsdl/176.34.224.194_8080/ws/clientService.wsdl_ClientService.wsdl"/>
+    <system systemId="http://176.34.224.194:8080/ws/meteringService?wsdl" uri="wsdl/176.34.224.194_8080/ws/meteringService.wsdl"/>
+    <system systemId="http://176.34.224.194:8080/ws/meteringService?wsdl=MeteringService.wsdl" uri="wsdl/176.34.224.194_8080/ws/meteringService.wsdl_MeteringService.wsdl"/>
+</catalog>

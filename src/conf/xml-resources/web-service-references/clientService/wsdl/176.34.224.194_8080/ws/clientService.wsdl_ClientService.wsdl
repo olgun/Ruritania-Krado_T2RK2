@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ClientService" targetNamespace="http://service.ws.t2no1.esi/" xmlns:ns1="http://service.ws.t2no1.esi/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://service.ws.t2no1.esi/" version="1.0" xmlns:tns="http://service.ws.t2no1.esi/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="createContract" type="tns:createContract"/>
+<xs:element name="createContractResponse" type="tns:createContractResponse"/>
+<xs:element name="getContract" type="tns:getContract"/>
+<xs:element name="getContractResponse" type="tns:getContractResponse"/>
+<xs:complexType name="getContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contractNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getContractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:contractOutput"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="contractOutput">
+    <xs:complexContent>
+      <xs:extension base="tns:createContractInput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="endDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="operatorContractNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="supplierContractNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="updated" type="xs:dateTime"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="createContractInput">
+    <xs:complexContent>
+      <xs:extension base="tns:messageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="areaId" type="xs:string"/>
+          <xs:element minOccurs="0" name="balanceProviderId" type="xs:string"/>
+          <xs:element minOccurs="0" name="clientContractNumber" type="xs:string"/>
+          <xs:element minOccurs="0" name="facilityId" type="xs:string"/>
+          <xs:element minOccurs="0" name="networkOwnerId" type="xs:string"/>
+          <xs:element minOccurs="0" name="newSupplierId" type="xs:string"/>
+          <xs:element minOccurs="0" name="oldSupplierId" type="xs:string"/>
+          <xs:element minOccurs="0" name="settlement" type="xs:string"/>
+          <xs:element minOccurs="0" name="startDate" type="xs:dateTime"/>
+          <xs:element minOccurs="0" name="user" type="tns:user"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+<xs:complexType name="messageBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="messageId" type="xs:string"/>
+      <xs:element minOccurs="0" name="messageType" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="user">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="address" type="tns:address"/>
+      <xs:element minOccurs="0" name="birthDate" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="city" type="xs:string"/>
+      <xs:element minOccurs="0" name="country" type="xs:string"/>
+      <xs:element minOccurs="0" name="house" type="xs:string"/>
+      <xs:element minOccurs="0" name="street" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="createContractInput" type="tns:createContractInput"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createContractResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:createContractOutput"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="createContractOutput">
+    <xs:complexContent>
+      <xs:extension base="tns:messageBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="contractNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="createContractResponse">
+    <wsdl:part element="ns1:createContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContractResponse">
+    <wsdl:part element="ns1:getContractResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createContract">
+    <wsdl:part element="ns1:createContract" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContract">
+    <wsdl:part element="ns1:getContract" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ClientService">
+    <wsdl:operation name="getContract">
+      <wsdl:input message="ns1:getContract" name="getContract">
+    </wsdl:input>
+      <wsdl:output message="ns1:getContractResponse" name="getContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createContract">
+      <wsdl:input message="ns1:createContract" name="createContract">
+    </wsdl:input>
+      <wsdl:output message="ns1:createContractResponse" name="createContractResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

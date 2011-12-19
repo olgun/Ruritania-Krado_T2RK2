@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ClientServiceImplService" targetNamespace="http://impl.ws.t2no1.esi/" xmlns:ns1="http://service.ws.t2no1.esi/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.ws.t2no1.esi/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:import location="http://176.34.224.194:8080/ws/clientService?wsdl=ClientService.wsdl" namespace="http://service.ws.t2no1.esi/">
+    </wsdl:import>
+  <wsdl:binding name="ClientServiceImplServiceSoapBinding" type="ns1:ClientService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsp:PolicyReference URI="#RM"/>
+    <wsdl:operation name="getContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getContract">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createContract">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createContract">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createContractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientServiceImplService">
+    <wsdl:port binding="tns:ClientServiceImplServiceSoapBinding" name="ClientServiceImplPort">
+      <soap:address location="http://176.34.224.194:8080/ws/clientService"/>
+    </wsdl:port>
+  </wsdl:service>
+    <wsp:Policy wsu:Id="RM" xmlns:wsam="http://www.w3.org/2007/02/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsrmp="http://docs.oasis-open.org/ws-rx/wsrmp/200702" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+   <wsam:Addressing>
+      <wsp:Policy/>
+   </wsam:Addressing>
+   <wsrmp:RMAssertion>
+      <wsrmp:DeliveryAssurance>
+         <wsp:Policy>
+            <wsrmp:ExactlyOnce/>
+            <wsrmp:InOrder/>
+         </wsp:Policy>
+      </wsrmp:DeliveryAssurance>
+      <wsrmp:InactivityTimeout Milliseconds="5000"/>
+      <wsrmp:BaseRetransmissionInterval Milliseconds="10000"/>
+      <wsrmp:ExponentialBackoff/>
+      <wsrmp:AcknowledgementInterval Milliseconds="5000"/>
+   </wsrmp:RMAssertion>
+</wsp:Policy>
+</wsdl:definitions>

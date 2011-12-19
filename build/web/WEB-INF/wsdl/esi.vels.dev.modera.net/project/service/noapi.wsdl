@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions name="T2NO2Api" targetNamespace="urn:T2NO2Api"
+	xmlns:typens="urn:T2NO2Api" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+			targetNamespace="urn:T2NO2Api">
+            <xsd:complexType name="SupplierChange">
+                <xsd:sequence>  
+                    <xsd:element name="client" type="typens:Client"
+                        maxOccurs="1" minOccurs="1"></xsd:element>                   	
+                    <xsd:element name="oldES" type="typens:ES" maxOccurs="1"
+                        minOccurs="0"></xsd:element>                 	
+                    <xsd:element name="newES" type="typens:ES" maxOccurs="1"
+                        minOccurs="1"></xsd:element>                 	
+                    <xsd:element name="changeDate" type="xsd:dateTime" maxOccurs="1"
+                        minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+			<xsd:complexType name="Client">
+				<xsd:sequence>                     	
+					<xsd:element name="id" type="xsd:string" maxOccurs="1"
+						minOccurs="1"></xsd:element>   
+					<xsd:element name="name" type="xsd:string" maxOccurs="1"
+						minOccurs="1"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:complexType name="ES">
+				<xsd:sequence>
+					<xsd:element name="id" type="xsd:string"
+						maxOccurs="1" minOccurs="1"></xsd:element>
+					<xsd:element name="name" type="xsd:string"
+						maxOccurs="1" minOccurs="1"></xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+            <xsd:complexType name="QualitySeries">
+                <xsd:sequence>
+                    <xsd:element name="from" type="xsd:string"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                    <xsd:element name="timestamp" type="xsd:dateTime"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                    <xsd:element name="value" type="xsd:int"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+			
+            <xsd:complexType name="LoadProfile">
+                <xsd:sequence>
+                    <xsd:element name="ES" type="typens:ES"
+                        maxOccurs="1" minOccurs="0"></xsd:element>
+                    <xsd:element name="period" type="typens:TimePeriod"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                    <xsd:element name="amount" type="xsd:float"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="TimePeriod">
+                <xsd:sequence>
+                    <xsd:element name="start" type="xsd:dateTime"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                    <xsd:element name="end" type="xsd:dateTime"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+			
+            <xsd:complexType name="SupplierChangeResponse">
+                <xsd:sequence>
+	                <xsd:element name="resultCode" type="xsd:int"
+	                    maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            
+            <xsd:complexType name="QualitySeriesResponse">
+                <xsd:sequence>
+                    <xsd:element name="resultCode" type="xsd:int"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="LoadProfileResponse">
+                <xsd:sequence>
+                    <xsd:element name="resultCode" type="xsd:int"
+                        maxOccurs="1" minOccurs="1"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            
+		</xsd:schema>
+	</types>
+	<message name="notifyOfClientESChange">
+		<part name="notifyOfClientESChangeRequest" type="typens:SupplierChange">
+			<documentation></documentation></part>
+	</message>
+	<message name="notifyOfClientESChangeResponse">
+		<wsdl:part name="notifyOfClientESChangeResponse" type="typens:SupplierChangeResponse"></wsdl:part>
+	</message>
+    <message name="qualitySeriesRequest">
+        <part name="qualitySeriesRequest" type="typens:QualitySeries"></part>
+    </message>
+	<message name="qualitySeriesResponse">
+		<part name="qualitySeriesResponse" type="typens:QualitySeriesResponse"></part>
+	</message>
+	<wsdl:message name="loadProfileRequest">
+		<wsdl:part name="loadProfileRequest" type="typens:LoadProfile"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="loadProfileResponse">
+		<wsdl:part name="loadProfileResponse" type="typens:LoadProfileResponse"></wsdl:part>
+	</wsdl:message>
+	<portType name="T2NO2ApiPortType">
+		<operation name="notifyOfClientESChange">
+			<documentation>Message for client electricity supplier change</documentation>
+			<input message="typens:notifyOfClientESChange"></input>
+			<output message="typens:notifyOfClientESChangeResponse"></output>
+		</operation>
+		<operation name="qualitySeries">
+			<documentation>Message for quality series</documentation>
+			<input message="typens:qualitySeriesRequest"></input>
+			<output message="typens:qualitySeriesResponse"></output>
+		</operation>
+		<wsdl:operation name="loadProfile">
+			<wsdl:documentation>Message for Load Profile</wsdl:documentation>
+			<wsdl:input message="typens:loadProfileRequest"></wsdl:input>
+			<wsdl:output message="typens:loadProfileResponse"></wsdl:output>
+		</wsdl:operation>
+	</portType>
+	<binding name="T2NO2ApiBinding" type="typens:T2NO2ApiPortType">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+		<operation name="notifyOfClientESChange">
+			<soap:operation soapAction="urn:T2NO2ApiAction"></soap:operation>
+			<input>
+				<soap:body namespace="urn:T2NO2Api" use="literal"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></soap:body>
+			</input>
+			<output>
+				<soap:body namespace="urn:T2NO2Api" use="literal"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></soap:body>
+			</output>
+		</operation>
+		<operation name="qualitySeries">
+			<soap:operation soapAction="urn:T2NO2ApiAction"></soap:operation>
+			<input>
+				<soap:body namespace="urn:T2NO2Api" use="literal"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></soap:body>
+			</input>
+			<output>
+				<soap:body namespace="urn:T2NO2Api" use="literal"
+					encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></soap:body>
+			</output>
+		</operation>
+        <operation name="loadProfile">
+            <soap:operation soapAction="urn:T2NO2ApiAction"></soap:operation>
+            <input>
+                <soap:body namespace="urn:T2NO2Api" use="literal"
+                    encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></soap:body>
+            </input>
+            <output>
+                <soap:body namespace="urn:T2NO2Api" use="literal"
+                    encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"></soap:body>
+            </output>
+        </operation>
+	</binding>
+	<service name="T2NO2ApiService">
+		<port name="T2NO2ApiPort" binding="typens:T2NO2ApiBinding">
+			<soap:address location="http://esi.vels.dev.modera.net/project/service/server.php"></soap:address>
+		</port>
+	</service>
+</definitions>
